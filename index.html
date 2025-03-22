@@ -21,6 +21,53 @@
             </p>
         </section>
 		
+		
+        <section>
+			<section id="examples">
+            <h2>Examples</h2>
+            <p>Here is an example of a simple motion fly script:</p>
+            <pre><code>name = "SimpleFly"
+description = "Makes you fly"
+
+function onUpdate()
+   local speed = 0.3
+   local motionY = 0.0
+	
+   if player.moving then
+      player.setSpeed(speed)
+   else
+      player.stop()
+   end
+	
+   if settings.jumpDown or settings.jumpPressed then
+      motionY = speed
+   elseif settings.sneakDown or settings.sneakPressed then
+      motionY = -speed
+   end
+
+   player.setMotion(player.motionX, motionY, player.motionZ)
+end
+</code></pre>
+            <p>Here is an example of a simple strafe speed script:</p>
+            <pre><code>name = "StrafeSpeed"
+description = "Makes you strafe speed"
+
+function onDisable()
+   player.setSprinting(false)
+end
+
+function onUpdate()
+   player.setSprinting(true)
+
+   if player.onGround and player.moving then
+      player.jump()
+   end
+
+   player.strafe()
+end
+</code></pre>
+        </section>
+		
 		<section id="properties">
             <h2>player Properties</h2>
 
@@ -304,7 +351,7 @@ end</code></pre>
    print("You pressed left")
 end</code></pre>
             </div>
-        </section>
+	</section>
     </div>
 </body>
 </html>
