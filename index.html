@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Script API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Atani Scripting API documentation</h1>
+    </header>
+
+    <div class="container">
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>
+                This documentation provides a semi-detailed guide to our Lua scripting API. The API is designed to 
+                allow you to interact with Atani Client and Minecraft.
+            </p>
+        </section>
+		
+		<section id="properties">
+            <h2>player Properties</h2>
+
+            <div class="property">
+                <h3>player.onGround</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the player is currently on the ground.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if player.onGround then
+   print("You are on ground!")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>player.moving</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the player is currently moving.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if player.moving then
+   print("You are moving!")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>player.motionX</h3>
+                <p><strong>Type:</strong> double</p>
+                <p><strong>Description:</strong> Returns the motion X of the minecraft player.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if player.motionX == 0 then
+   print("Motion X is zero")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>player.motionY</h3>
+                <p><strong>Type:</strong> double</p>
+                <p><strong>Description:</strong> Returns the motion Y of the minecraft player.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if player.motionY == 0 then
+   print("You are neither moving upwards nor downwards")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>player.motionZ</h3>
+                <p><strong>Type:</strong> double</p>
+                <p><strong>Description:</strong> Returns the motion Z of the minecraft player.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if player.motionZ == 0 then
+   print("Motion Z is zero")
+end</code></pre>
+            </div>
+        </section>
+
+        <section id="functions">
+            <h2>player Functions</h2>
+
+            <div class="function">
+                <h3>jump()</h3>
+                <p><strong>Description:</strong> Makes the player jump</p>
+				 <p><strong>Example:</strong></p>
+                <pre><code>player.jump()</code></pre>
+            </div>
+			
+			<div class="function">
+				<h3>stop()</h3>
+                <p><strong>Description:</strong> Makes the player stop all movement</p>
+				 <p><strong>Example:</strong></p>
+                <pre><code>player.stop()</code></pre>
+			</div>
+			
+			<div class="function">
+				<h3>setSprinting(sprinting)</h3>
+                <p><strong>Description:</strong> Sets the player's sprinting state.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>sprinting</code> (boolean): The sprint value</li>
+                </ul>
+				 <p><strong>Example:</strong></p>
+                <pre><code>player.setSprinting(false)</code></pre>
+			</div>
+			
+			<div class="function">
+				<h3>setSpeed(moveSpeed)</h3>
+                <p><strong>Description:</strong> Sets the player's motion speed.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>moveSpeed</code> (double): The speed amount</li>
+                </ul>
+				 <p><strong>Example:</strong></p>
+                <pre><code>player.setSpeed(0.3)</code></pre>
+			</div>
+			
+			<div class="function">
+				<h3>setMotion(motionX, motionY, motionZ)</h3>
+                <p><strong>Description:</strong> Sets the player's motion.</p>
+                <p><strong>Parameters:</strong></p>
+                <ul>
+                    <li><code>motionX</code> (double): The motion's X value</li>
+                    <li><code>motionY</code> (double): The motion's Y value</li>
+                    <li><code>motionZ</code> (double): The motion's Z value</li>
+                </ul>
+				 <p><strong>Example:</strong></p>
+                <pre><code>player.setMotion(player.motionX, 0.0, player.motionZ)</code></pre>
+			</div>
+        </section>
+		
+		<section id="properties">
+            <h2>settings Properties</h2>
+
+            <div class="property">
+                <h3>settings.jumpDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the jump button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.jumpDown then
+   print("You are holding down jump")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.jumpPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the jump button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.jumpPressed then
+   print("You pressed jump")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.sneakDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the sneak button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.sneakDown then
+   print("You are sneaking")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.sneakPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the sneak button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.sneakPressed then
+   print("You pressed sneak")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.forwardDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the forwards button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.forwardDown then
+   print("You are going forwards")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.forwardPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the forwards button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.forwardPressed then
+   print("You pressed forward")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.backDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the backwards button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.backDown then
+   print("You are going backwards")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.backPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the backwards button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.backPressed then
+   print("You pressed backward")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.rightDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the right button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.rightDown then
+   print("You are going right")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.rightPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the right button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.rightPressed then
+   print("You pressed right")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.leftDown</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the left button is held down.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.leftDown then
+   print("You are going left")
+end</code></pre>
+            </div>
+
+            <div class="property">
+                <h3>settings.leftPressed</h3>
+                <p><strong>Type:</strong> boolean</p>
+                <p><strong>Description:</strong> Indicates whether the left button is pressed.</p>
+                <p><strong>Example:</strong></p>
+                <pre><code>if settings.leftPressed then
+   print("You pressed left")
+end</code></pre>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
